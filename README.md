@@ -30,6 +30,11 @@ List
 ----
 ```python
 <list> = <list>[<slice>]       # Or: <list>[from_inclusive : to_exclusive : ±step]
+Example: 
+colors = ['red', 'blue', 'green']
+  print(colors[0])    ## red
+  print(colors[2])    ## green
+  print(len(colors))  ## 3
 ```
 
 ```python
@@ -72,6 +77,42 @@ Dictionary
 <view> = <dict>.keys()                          # Coll. of keys that reflects changes.
 <view> = <dict>.values()                        # Coll. of values that reflects changes.
 <view> = <dict>.items()                         # Coll. of key-value tuples that reflects chgs.
+Example:
+  ## Can build up a dict by starting with the the empty dict {}
+  ## and storing key/value pairs into the dict like this:
+  ## dict[key] = value-for-that-key
+  dict = {}
+  dict['a'] = 'alpha'
+  dict['g'] = 'gamma'
+  dict['o'] = 'omega'
+  print(dict) ## {'a': 'alpha', 'o': 'omega', 'g': 'gamma'}
+  ## By default, iterating over a dict iterates over its keys.
+  ## Note that the keys are in a random order.
+  for key in dict: print(key)
+  ## prints a g o
+  
+  ## Exactly the same as above
+  for key in dict.keys(): print(key)
+
+  ## Get the .keys() list:
+  print(dict.keys())  ## dict_keys(['a', 'o', 'g'])
+
+  ## Likewise, there's a .values() list of values
+  print(dict.values())  ## dict_values(['alpha', 'omega', 'gamma'])
+
+  ## Common case -- loop over the keys in sorted order,
+  ## accessing each key/value
+  for key in sorted(dict.keys()):
+    print(key, dict[key])
+  
+  ## .items() is the dict expressed as (key, value) tuples
+  print(dict.items())  ##  dict_items([('a', 'alpha'), ('o', 'omega'), ('g', 'gamma')])
+
+  ## This loop syntax accesses the whole dict by looping
+  ## over the .items() tuple list, accessing one (key, value)
+  ## pair on each iteration.
+  for k, v in dict.items(): print(k, '>', v)
+  ## a > alpha    o > omega     g > gamma
 ```
 
 ```python
